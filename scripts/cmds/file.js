@@ -1,35 +1,36 @@
 const fs = require('fs');
 
 module.exports = {
-  config: {
-    name: "givefile",
-    aliases: ["file"],
-    version: "1.0",
-    author: "♡ 𝐍𝐚𝐳𝐫𝐮𝐥 ♡",
-    countDown: 5,
-    role: 0,
-    description: "extract file",
-    category: "owner",
-    guide: "{pn} Write a file name"
-  },
+	config: {
+		name: "file",
+		aliases: ["files"],
+		version: "1.0",
+		author: "BADHON",
+		countDown: 5,
+		role: 0,
+		shortDescription: "Send bot script",
+		longDescription: "Send bot specified file ",
+		category: "𝗢𝗪𝗡𝗘𝗥",
+		guide: "{pn} file name. Ex: .{pn} filename"
+	},
 
-  onStart: async function ({ message, args, api, event }) {
-    const permission = ["61576178781718"];
-    if (!permission.includes(event.senderID)) {
-      return api.sendMessage("⩸__ 😠𝙰𝚛𝚎 𝚢𝚘𝚞 𝚌𝚛𝚊𝚣𝚢 𝙾𝚗𝚕𝚢 𝙽𝙸𝚂𝙰𝙽 𝙱𝚘𝚜𝚜𝚎 𝚙𝚎𝚛𝚖𝚒𝚜𝚜𝚒𝚘𝚗 𝚝𝚘 𝚞𝚜𝚎 𝚝𝚑𝚒𝚜 𝚌𝚘𝚖𝚖𝚊𝚗𝚍𝚜 𝙵𝚒𝚕𝚎. ❌", event.threadID, event.messageID);
-    }
+	onStart: async function ({ message, args, api, event }) {
+		const permission = ["61553937610145","61575889146877",];
+		if (!permission.includes(event.senderID)) {
+			return api.sendMessage(" ⩸__𝗢𝗻𝗹𝘆 𝗕𝗼𝘀𝘀 𝗦𝗵𝗮𝗻𝘁𝗼 𝗽𝗲𝗿𝗺𝗶𝘀𝘀𝗶𝗼𝗻 𝘁𝗼 𝘂𝘀𝗲 𝘁𝗵𝗶𝘀 𝗰𝗼𝗺𝗺𝗮𝗻𝗱 𝗳𝗶𝗹𝗲-🐤", event.threadID, event.messageID);
+		}
 
-    const fileName = args[0];
-    if (!fileName) {
-      return api.sendMessage("🔰 provide a file name!", event.threadID, event.messageID);
-    }
+		const fileName = args[0];
+		if (!fileName) {
+			return api.sendMessage("𝐏𝐥𝐞𝐚𝐬𝐞 𝐩𝐫𝐨𝐯𝐢𝐝𝐞 𝐟𝐢𝐥𝐞 𝐧𝐚𝐦𝐞.🙂🦋", event.threadID, event.messageID);
+		}
 
-    const filePath = __dirname + `/${fileName}.js`;
-    if (!fs.existsSync(filePath)) {
-      return api.sendMessage(`File not found: ${fileName}.js`, event.threadID, event.messageID);
-    }
+		const filePath = __dirname + `/${fileName}.js`;
+		if (!fs.existsSync(filePath)) {
+			return api.sendMessage(`𝐅𝐢𝐥𝐞 𝐜𝐚𝐧'𝐭 𝐟𝐨𝐮𝐧𝐝🐸: ${fileName}.js`, event.threadID, event.messageID);
+		}
 
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    api.sendMessage({ body: fileContent }, event.threadID);
-  }
+		const fileContent = fs.readFileSync(filePath, 'utf8');
+		api.sendMessage({ body: fileContent }, event.threadID);
+	}
 };
