@@ -1,32 +1,46 @@
 module.exports = {
   config: {
     name: "edit",
-    version: "1.0",
-    author: "Nyx",
+    aliases: ["e"],
     role: 0,
-    shortDescription: "Edit a bot's message",
-    longDescription: "Edit a bot's message by replying to it with 'edit <message>'.",
-    category: "user",
+    author: "ChatGpt",
+    countDown: 5,
+    longDescription: "",
+    category: "image",
     guide: {
-      en: "{p}{n} <message>",
-    },
-  },
-
-  onStart: async function ({ api, event, args }) {
-    const replyMessage = event.messageReply.body;
-
-    if (!replyMessage || !args || args.length === 0) {
-      api.sendMessage("Invalid input. Please reply to a bot message to edit.", event.threadID, event.messageID);
-      return;
-    }
-
-    const editedMessage = `${args.join(" ")}`;
-
-    try {
-      await api.editMessage(`${editedMessage}`, event.messageReply.messageID);
-    } catch (error) {
-      console.error("Error editing message", error);
-      api.sendMessage("An error occurred while editing the message. Please try again later.", event.threadID);
+      en: "/edit make this image black white"
     }
   },
+  onStart: async function ({ message, api, args, event }) {
+    if (!event.messageReply || !event.messageReply.attachments || !event.messageReply.attachments[0]) {
+      return message.reply("📸| Please reply to an image to edit it.");
+    }
+
+    if (!args[0]) {
+      return message.reply("📝| Please provide a prompt.");
+    }
+
+    const prompt = encodeURIComponent(args.join(" "));
+    const imgurl = encodeURIComponent(event.messageReply.attachments[0].url);
+    const geditUrl = `https://smfahim.xyz/gedit?prompt=${prompt}&url=${imgurl}`;
+
+    api.setMessageReaction("🦆", event.messageID, () => {}, true);
+
+    message.reply("🔄| Editing image, please wait...", async (err, info) => {
+      try {
+        const attachment = await global.utils.getStreamFromURL(geditUrl);
+        message.reply({ 
+          body: `✅| Here is your edited image!`, 
+          attachment: attachment 
+        });
+
+        let ui = info.messageID;          
+        message.unsend(ui);
+        api.setMessageReaction("✅", event.messageID, () => {}, true);
+      } catch (error) {
+        message.reply("❌| There was an error editing your image.");
+        console.error(error);
+      }
+    });
+  }
 };
