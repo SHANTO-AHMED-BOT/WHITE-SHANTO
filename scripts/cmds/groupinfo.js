@@ -6,8 +6,8 @@ config: {
     name: "groupinfo",
     aliases: ['boxinfo'],
     version: "1.0",
-    author: "Aryan Chauhan 🍒",
-    countDown: 0,
+    author: "xemon",
+    countDown: 5,
     role: 0,
     shortDescription: "See Box info",
     longDescription: "",
@@ -52,7 +52,7 @@ const name = infu[qtv2[i].id].name;
       var callback = () =>
         api.sendMessage(
           {
-            body: `🍒「 𝐆𝐂 𝐍𝐚𝐦𝐞 」:${threadName}\n🎀「 𝐆𝐫𝐨𝐮𝐩 𝐈𝐃 」: ${id}\n🌷「 𝐀𝐩𝐩𝐫𝐨𝐯𝐚𝐥 」: ${pd}\n💛「 𝐄𝐦𝐨𝐣𝐢 」: ${icon}\n🔥「 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧 」: 𝐈𝐧𝐜𝐥𝐮𝐝𝐢𝐧𝐠 ${threadMem} 𝐌𝐞𝐦𝐛𝐞𝐫𝐬\n💌「 𝐍𝐮𝐦𝐛𝐞𝐫 𝐎𝐟 𝐌𝐚𝐥𝐞𝐬 」: ${nam}\n😘「 𝐍𝐮𝐦𝐛𝐞𝐫 𝐎𝐟 𝐅𝐞𝐦𝐚𝐥𝐞𝐬 」:  ${nu}\n💝「 𝐓𝐨𝐭𝐚𝐥 𝐀𝐝𝐦𝐢𝐧𝐢𝐬𝐭𝐫𝐚𝐭𝐨𝐫𝐬 」: ${qtv} \n「 𝐈𝐧𝐜𝐥𝐮𝐝𝐞 」:\n${listad}\n🐰「 𝐓𝐨𝐭𝐚𝐥 𝐍𝐮𝐦𝐛𝐞𝐫 𝐎𝐟 𝐌𝐞𝐬𝐬𝐚𝐠𝐞𝐬 」: ${sl} msgs.\n\n𝐌𝐚𝐝𝐞 𝐖𝐢𝐭𝐡 ❤️ 𝐁𝐲: 【 —͟͞͞ɴiនꫝɴ✘Ꭼᴅɪᴛᴢ ⸙ 】`,
+            body: `♻️「 𝗚𝗖 𝗡𝗔𝗠𝗘 」:${threadName}\n♻️「 𝗚𝗥𝗢𝗨𝗣 𝗜𝗗 」: ${id}\n♻️「 𝗔𝗣𝗣𝗥𝗢𝗩𝗔𝗟 」: ${pd}\n♻️「 𝗘𝗠𝗢𝗝𝗜 」: ${icon}\n♻️「 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡 」: 𝗜𝗡𝗖𝗟𝗨𝗗𝗜𝗡𝗚 ${threadMem} 𝗠𝗘𝗠𝗕𝗘𝗥𝗦\n♻️「 𝗡𝗨𝗠𝗕𝗘𝗥 𝗢𝗙 𝗠𝗔𝗟𝗘𝗦 」: ${nam}\n♻️「 𝗡𝗨𝗠𝗕𝗘𝗥 𝗢𝗙 𝗙𝗘𝗠𝗔𝗟𝗘𝗦 」:  ${nu}\n♻️「 𝗧𝗢𝗧𝗔𝗟 𝗔𝗗𝗠𝗜𝗡𝗜𝗦𝗧𝗥𝗔𝗧𝗢𝗥𝗦 」: ${qtv} \n「 𝗜𝗡𝗖𝗜𝗨𝗗𝗘 」:\n${listad}\n♻️「 𝗧𝗢𝗧𝗔𝗟 𝗡𝗨𝗠𝗕𝗘𝗥 𝗢𝗙 𝗠𝗘𝗦𝗦𝗔𝗚𝗘𝗦 」: ${sl} msgs.\n\n𝗠𝗔𝗗𝗘 𝗪𝗜𝗧𝗛 ❤️ 𝗕𝗬: TERAA BAPPP `,
             attachment: fs.createReadStream(__dirname + '/cache/1.png')
           },
           event.threadID,
